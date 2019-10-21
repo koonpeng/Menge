@@ -8,7 +8,7 @@ file(
 	GLOB_RECURSE
 	source_files
 	${MENGE_SRC_DIR}/MengeCore/*.cpp
-	${MENGE_SRC_DIR}/MengeCore/*.h
+  ${MENGE_SRC_DIR}/MengeCore/*.h
 )
 
 
@@ -19,6 +19,28 @@ add_library(
 	${source_files}
 )
 
-target_link_libraries ( mengeCore dl tinyxml )
+target_link_libraries ( mengeCore PUBLIC dl PRIVATE tinyxml )
 
 install( TARGETS mengeCore DESTINATION ${LIBRARY_OUTPUT_PATH} )
+
+if (UNIX AND NOT APPLE)
+  include(GNUInstallDirs)
+  install(TARGETS mengeCore
+    EXPORT Menge
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/Menge
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Menge
+  )
+  install(
+    DIRECTORY
+      ${MENGE_SRC_DIR}/MengeCore
+      ${MENGE_SRC_DIR}/../include/
+      ${MENGE_SRC_DIR}/tinyxml
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Menge
+    FILES_MATCHING PATTERN *.h
+  )
+  install(EXPORT Menge
+    NAMESPACE Menge::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/Menge/cmake
+    FILE MengeConfig.cmake
+  )
+endif()
