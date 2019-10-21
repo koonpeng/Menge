@@ -1,0 +1,9 @@
+<package>
+  <name>Menge</name>
+  <version>0.9.2</version>
+  <description>
+    Menge is a powerful, cross-platform, modular framework for crowd simulation developed at the University of North Carolina - Chapel Hill.
+  </description>
+  <maintainer email="koonpeng@openrobotics.org">Teo Koon Peng</maintainer>
+  <license>Apache 2.0</license>
+</package>
