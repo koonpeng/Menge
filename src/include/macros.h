@@ -41,13 +41,13 @@
 
 #ifndef DWORD
 #define WINAPI
-typedef unsigned long DWORD;
-typedef short WCHAR;
+typedef uint32_t DWORD;
+typedef int32_t WCHAR;
 typedef void * HANDLE;
 //#define MAX_PATH    PATH_MAX
-typedef unsigned char BYTE;
-typedef unsigned short WORD;
-typedef unsigned int BOOL;
+typedef uint8_t BYTE;
+typedef uint16_t WORD;
+typedef int32_t BOOL;
 #endif
 
 #ifdef UNICODE
