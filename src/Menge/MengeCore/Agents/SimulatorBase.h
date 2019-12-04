@@ -287,6 +287,10 @@ namespace Menge {
 
 		template< class Agent >
 		void SimulatorBase<Agent>::computeNeighbors( Agent * agent ) {
+      // hack to support dynamic obstacle
+      if (agent->isExternal())
+        return;
+
 			// obstacles
 			agent->startQuery();
 			_spatialQuery->obstacleQuery(agent);

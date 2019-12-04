@@ -197,6 +197,8 @@ namespace Menge {
 			 */
 			virtual std::string getStringId() const = 0;
 
+      virtual bool isExternal();
+
 			// Properties of a basic agent
 			/*!
 			 *	@brief		The maximum speed the agent can take.
@@ -332,6 +334,8 @@ namespace Menge {
 			 *	and the pointer to the wall.
 			 */
 			std::vector<NearObstacle> _nearObstacles;
+
+      bool _external = false;
 
 			/*!
 			 *  @brief      Inserts an agent neighbor into the set of neighbors of
